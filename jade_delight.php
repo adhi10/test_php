@@ -55,6 +55,20 @@ if ($conn->query($sql) === TRUE) {
   echo "Error creating table: " . $conn->error;
 }
 
+
+
+$sql = "SELECT product, price FROM Products";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "<tr><td>".$row["product"]."</td><td>".$row["price"]."</td></tr>";
+  }
+} else {
+  echo "0 results";
+}
+
 $conn->close();
 ?>
 
